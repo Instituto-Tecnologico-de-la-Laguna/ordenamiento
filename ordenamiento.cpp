@@ -64,8 +64,13 @@ int main() {
             case 1:
                 cout << ">>> Burbuja (Bubble Sort)" << endl;
                 cout << "    Antes : "; 
-      
+                mostrarArreglo(original, TAM);
+
+                cout << "Ordenando..." << endl;
+                burbuja(original, TAM);
+
                 cout << "    Despues: "; 
+                mostrarArreglo(original, TAM);
                 break;
  
             case 2:
@@ -103,4 +108,17 @@ void mostrarArreglo(int arr[], int n) {
         if (i < n - 1) cout << ",";
     }
     cout << " ]" << endl;
+}
+
+void burbuja(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Intercambiar arr[j] y arr[j+1]
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
 }
