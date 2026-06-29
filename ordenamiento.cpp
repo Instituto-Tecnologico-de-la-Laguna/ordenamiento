@@ -32,6 +32,8 @@ void heapify(int arr[], int n, int i);          // <-- completar
 //  ARREGLO ORIGINAL (fijo, no se modifica)
 // ============================================================
 int original[TAM] = {45, 12, 78, 3, 56, 89, 23, 67, 34, 9};
+void mostrarArreglo(int arr[], int n);
+void burbuja(int arr[], int n);
  
 // ============================================================
 //  MAIN
@@ -48,7 +50,7 @@ int main() {
         cout << " ";
         mostrarArreglo(original, TAM);
         cout << "----------------------------------------" << endl;
-        cout << "  1. Burbuja  (Bubble Sort)"              << endl;
+        cout << "  1. Burbuja  (Bubble Sort) Solo funciona este"              << endl;
         cout << "  2. QuickSort"                           << endl;
         cout << "  3. HeapSort"                            << endl;
         cout << "  0. Salir"                               << endl;
@@ -62,11 +64,23 @@ int main() {
  
         switch (opcion) {
             case 1:
-                cout << ">>> Burbuja (Bubble Sort)" << endl;
-                cout << "    Antes : "; 
-      
-                cout << "    Despues: "; 
-                break;
+    // Copiar original a temp
+    for (int i = 0; i < TAM; i++) {
+        temp[i] = original[i];
+    }
+
+    cout << ">>> Burbuja (Bubble Sort)" << endl;
+
+    cout << "    Antes : ";
+    mostrarArreglo(temp, TAM);
+
+    burbuja(temp, TAM);   // AQUÍ SE LLAMA AL MÉTODO BURBUJA
+
+    cout << "    Despues: ";
+    mostrarArreglo(temp, TAM);
+
+    break;
+          
  
             case 2:
                 cout << ">>> QuickSort" << endl;
@@ -103,4 +117,16 @@ void mostrarArreglo(int arr[], int n) {
         if (i < n - 1) cout << ",";
     }
     cout << " ]" << endl;
+}
+// Método de ordenamiento Burbuja
+void burbuja(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int aux = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = aux;
+            }
+        }
+    }
 }
