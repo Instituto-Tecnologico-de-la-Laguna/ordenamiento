@@ -21,7 +21,7 @@ const int TAM = 10;
 void mostrarArreglo(int arr[], int n);
 void copiarArreglo(int origen[], int destino[], int n);
  
-void burbuja(int arr[], int n);
+void BurbujaDsc(int arr[], int n);
 void quickSort(int arr[], int izq, int der);
 void heapSort(int arr[], int n);
  
@@ -64,8 +64,10 @@ int main() {
             case 1:
                 cout << ">>> Burbuja (Bubble Sort)" << endl;
                 cout << "    Antes : "; 
-      
+                mostrarArreglo(original, TAM);
                 cout << "    Despues: "; 
+                BurbujaDsc(original, TAM);
+               
                 break;
  
             case 2:
@@ -95,6 +97,7 @@ int main() {
     return 0;
 }
 
+
 // Muestra el arreglo en una línea
 void mostrarArreglo(int arr[], int n) {
     cout << "[ ";
@@ -103,4 +106,19 @@ void mostrarArreglo(int arr[], int n) {
         if (i < n - 1) cout << ",";
     }
     cout << " ]" << endl;
+}
+
+void BurbujaDsc(int arr[], int n)
+{
+    for (int i = 0; i < n-1; i++)
+      for (int j = n - 1; i < j; j--)
+      {
+            if (arr[j - 1] < arr[j])
+            {
+                int aux = arr[j - 1];
+                arr[j - 1] = arr[j];
+                arr[j] = aux;
+            }
+       }
+            
 }
