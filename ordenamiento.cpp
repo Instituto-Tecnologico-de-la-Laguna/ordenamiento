@@ -104,3 +104,37 @@ void mostrarArreglo(int arr[], int n) {
     }
     cout << " ]" << endl;
 }
+
+void quickSort(int arr[], int izq, int der)
+{
+    int i = izq;
+    int j = der;
+    int pivote = arr[(izq + der) / 2];
+    int aux;
+
+    while (i <= j)
+    {
+        while (arr[i] < pivote)
+            i++;
+
+        while (arr[j] > pivote)
+            j--;
+
+        if (i <= j)
+        {
+            aux = arr[i];
+            arr[i] = arr[j];
+            arr[j] = aux;
+
+            i++;
+            j--;
+        }
+    }
+
+    if (izq < j)
+        quickSort(arr, izq, j);
+
+    if (i < der)
+        quickSort(arr, i, der);
+}
+
