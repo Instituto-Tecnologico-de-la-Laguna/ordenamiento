@@ -54,9 +54,7 @@ int main() {
         cout << "  0. Salir"                               << endl;
         cout << "----------------------------------------" << endl;
         cout << " Elige una opcion: ";
-        cin  >> opcion;
- 
-    
+        cin  >> opcion;  
  
         cout << endl;
  
@@ -69,10 +67,17 @@ int main() {
                 break;
  
             case 2:
+
                 cout << ">>> QuickSort" << endl;
-                cout << "    Antes : ";  
-                
-                cout << "    Despues: "; 
+                copiarArreglo(original, temp, TAM);
+
+                cout << "    Antes : ";
+                mostrarArreglo(temp, TAM);
+
+                quickSort(temp, 0, TAM-1);
+
+                cout << "    Despues: ";
+                mostrarArreglo(temp, TAM);                     
                 break;
  
             case 3:
@@ -138,3 +143,10 @@ void quickSort(int arr[], int izq, int der)
         quickSort(arr, i, der);
 }
 
+void copiarArreglo(int origen[], int destino[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        destino[i] = origen[i];
+    }
+}
